@@ -53,6 +53,7 @@ int2let i = chr (i + ord 'a')
 
 shift :: Int -> Char -> Char
 shift n c | isLower c = int2let ((let2Int c + n) `mod` 26)
+          | isUpper c = toUpper (int2let ((let2Int (toLower c) + n) `mod` 26))
           | otherwise = c
 
 encode :: Int -> String -> String
