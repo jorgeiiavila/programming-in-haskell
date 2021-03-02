@@ -1,3 +1,5 @@
+-- Chapter 2 - First steps
+
 -- Notes
 {-
     1.- Identifiers name must start with a lowercase letter.
@@ -28,9 +30,9 @@ n = a `div` length xs
         a = 10 
         xs = [1,2,3,4,5]
 
--- 2 - Alternate definition of the last function
+-- Exercise 2
 altLast xs = head (reverse xs)
 
--- 3 - Two alternate definitions for the init function
+-- Exercise 3
 initOne xs = take ((length xs) - 1) xs
 initTwo xs = reverse (tail (reverse xs))

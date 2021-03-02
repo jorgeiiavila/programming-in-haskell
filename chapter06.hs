@@ -15,19 +15,19 @@ isort (x:xs) = insert x (isort xs)
 
 -- Exercises
 
--- Problem 1
+-- Exercise 1
 fact :: Int -> Int
 fact 0 = 1
 fact n | n >= 0 = n * fact (n - 1)
        | otherwise = error "Invalid number."
 
--- Problem 2
+-- Exercise 2
 sumdown :: Int -> Int
 sumdown 0 = 0
 sumdown n | n >= 0 = n + sumdown (n - 1)
           | otherwise = error "Invalid number."
 
--- Problem 3
+-- Exercise 3
 exp2 :: Int -> Int -> Int
 m `exp2` 0 = 1
 m `exp2` n = m * (m `exp2` (n - 1))
@@ -48,13 +48,13 @@ m `exp2` n = m * (m `exp2` (n - 1))
     8
 -}
 
--- Problem 4
+-- Exercise 4
 euclid :: Int -> Int -> Int
 euclid m n | m == n = m
            | m < n = euclid m (n - m)
            | n < m = euclid (m - n) n
 
--- Problem 5
+-- Exercise 5
 
 {- 
     a. length [1,2,3]
@@ -96,7 +96,7 @@ euclid m n | m == n = m
     [1,2]
 -}
 
--- Problem 6
+-- Exercise 6
 -- a.
 and' :: [Bool] -> Bool
 and' [] = True
@@ -126,14 +126,14 @@ elem' _ [] = False
 elem' n (x:xs) | n == x = True
                | otherwise = elem' n xs
 
--- Problem 7
+-- Exercise 7
 merge :: Ord a => [a] -> [a] -> [a]
 merge xs [] = xs
 merge [] ys = ys
 merge (x:xs) (y:ys) | x < y = x : merge xs (y:ys)
                     | otherwise = y : merge (x:xs) ys
 
--- Problem 8
+-- Exercise 8
 msort :: Ord a => [a] -> [a]
 msort [] = []
 msort [x] = [x]
@@ -150,7 +150,7 @@ halve xs = (xss, ys)
         xss = take half xs
         ys = drop half xs
 
--- Problem 9
+-- Exercise 9
 sum' :: [Int] -> Int
 sum' [] = 0
 sum' (x:xs) = x + sum' xs

@@ -1,13 +1,15 @@
--- Chapter 4 Problems
+-- Chapter 4 - Defining functions
 
--- Problem 1
+-- Exercises
+
+-- Exercise 1
 halve :: [a] -> ([a], [a])
 halve xs = (a, b) where 
                     half = length xs `div` 2
                     a = take half xs
                     b = drop half xs
 
--- Problem 2
+-- Exercise 2
 
 -- With head / tail
 third :: [a] -> a
@@ -19,7 +21,7 @@ third' xs = xs !! 2
 -- With pattern matching
 third'' (_:(_:(x:_))) = x
 
--- Problem 3
+-- Exercise 3
 
 -- With conditional expression
 safetail :: [a] -> [a]
@@ -33,13 +35,13 @@ safetail' xs | null xs = []
 safetail'' [] = []
 safetail'' xs = tail xs
 
--- Problem 4
+-- Exercise 4
 or :: Bool -> Bool -> Bool
 or True _ = True
 or _ True = True
 or _ _ = False
 
--- Problem 5
+-- Exercise 5
 
 {-
     Pattern:
@@ -50,7 +52,7 @@ andPatternFormalization :: Bool -> Bool -> Bool
 andPatternFormalization x y = if x then if y then True else False
                     else  False
 
--- Problem 6
+-- Exercise 6
 {-
     Pattern:
     True && b = b
@@ -58,7 +60,7 @@ andPatternFormalization x y = if x then if y then True else False
 -}
 andPatternFormalization' x y = if x then y else False
 
--- Problem 7
+-- Exercise 7
 {-
     Formalize the following function:
     mult :: Int -> Int -> Int -> Int
@@ -68,7 +70,7 @@ andPatternFormalization' x y = if x then y else False
 mult :: Int -> Int -> Int -> Int
 mult = (\x -> (\y -> (\z -> x * y * z)))
 
--- Problem 8
+-- Exercise 8
 luhnDouble :: Int -> Int
 luhnDouble x | x * 2 > 9 = (x * 2) - 9
              | otherwise = x * 2

@@ -1,3 +1,5 @@
+-- Chapter 1 - Introduction
+
 qsort [] _ = []
 qsort (x:xs) reverse = qsort xss reverse ++ [x] ++ qsort ys reverse
                where
