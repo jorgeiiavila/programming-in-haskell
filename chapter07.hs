@@ -5,7 +5,7 @@ import Data.List
 
 -- Examples
 
--- 1. Binary string transmitter (Modified example below in problem 7)
+-- 1. Binary string transmitter (Modified example below in exercise 7)
 
 -- 2. Voting algorithms
 
@@ -50,11 +50,11 @@ winner' bs = case rank (rmempty bs) of
 
 -- Exercises
 
--- Problem 1
-problem1 :: (a -> Bool) -> (a -> b) -> [a] -> [b]
-problem1 p f = map f . filter p
+-- Exercise 1
+exercise1 :: (a -> Bool) -> (a -> b) -> [a] -> [b]
+exercise1 p f = map f . filter p
 
--- Problem 2
+-- Exercise 2
 -- a.
 all' :: (a -> Bool) -> [a] -> Bool
 all' _ [] = True
@@ -76,7 +76,7 @@ dropWhile' _ [] = []
 dropWhile' f (x:xs) | f x = dropWhile f xs
                     | otherwise = x:xs
 
--- Problem 3
+-- Exercise 3
 map' :: (a -> b) -> [a] -> [b]
 map' f = foldr (\x y -> f x : y) []
 
@@ -85,18 +85,18 @@ filter' f = foldr g []
         where g x xs | f x = x : xs
                      | otherwise = xs
 
--- Problem 4
+-- Exercise 4
 dec2int :: [Int] -> Int
 dec2int = foldl (\x y -> 10 * x + y) 0
 
--- Problem 5
+-- Exercise 5
 curry' :: ((a, b) -> c) -> a -> b -> c
 curry' f x y = f (x, y) 
 
 uncurry' :: (a -> b -> c) -> (a, b) -> c
 uncurry' f (x, y) = f x y 
 
--- Problem 6
+-- Exercise 6
 unfold p h t x | p x = []
                | otherwise = h x : unfold p h t (t x)
 
@@ -109,7 +109,7 @@ mapf f = unfold null (f . head) tail
 iterate'' :: (a -> a) -> a -> [a]
 iterate'' = unfold (const False) id
 
--- Problem 7
+-- Exercise 7
 type Bit = Int
 
 bit2intalt :: [Bit] -> Int
@@ -154,7 +154,7 @@ transmit = decode . channel . encode
 channel :: [Bit] -> [Bit]
 channel = id
 
--- Problem 8
+-- Exercise 8
 
 faultyChannel :: [Bit] -> [Bit]
 faultyChannel (_:xs) = xs
@@ -162,13 +162,13 @@ faultyChannel (_:xs) = xs
 faultyTransmit :: String -> String
 faultyTransmit = decode . faultyChannel . encode
 
--- Problem 9
+-- Exercise 9
 altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
 altMap _ _ [] = []
 altMap f _ [x] = [f x]
 altMap f g (x:(y:ys)) = [f x , g y] ++ altMap f g ys
 
--- Problem 10
+-- Exercise 10
 luhnDouble :: Int -> Int
 luhnDouble x | x * 2 > 9 = (x * 2) - 9
              | otherwise = x * 2

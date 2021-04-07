@@ -117,12 +117,12 @@ exampleOne = solutions' [1,3,7,10,25,50] 765
 
 -- Exercices
 
--- Problem 1
+-- Exercise 1
 choices' :: [a] -> [[a]]
 choices' ns = [choice | n <- subs ns, 
                         choice <- perms n]
 
--- Problem 2
+-- Exercise 2
 removeOne :: Eq a => a -> [a] -> [a]
 removeOne _ [] = []
 removeOne n (x:xs) | n == x = xs
@@ -133,7 +133,7 @@ isChoice [] _ = True
 isChoice (_:_) [] = False
 isChoice xs (y:ys) = isChoice (removeOne y xs) ys
 
--- Problem 3
+-- Exercise 3
 {-
     The function will loop forever for lists with more than one 
     element because the first element of the last tuple of the 
@@ -141,13 +141,13 @@ isChoice xs (y:ys) = isChoice (removeOne y xs) ys
     list.
 -}
 
--- Problem 4
+-- Exercise 4
 allExprs = concatMap exprs (choices [1,3,7,10,25,50])
 -- There are 33,665,406 possible expressions
 validExprs = filter (not . null) (map eval allExprs) 
 -- There are 4672540 valid expressions
 
--- Problem 5
+-- Exercise 5
 valid'' :: Op -> Int -> Int -> Bool
 valid'' Add _ _ = True
 valid'' Sub x y = True
@@ -161,7 +161,7 @@ eval' (App o l r) = [apply o x y | x <- eval' l, y <- eval' r, valid'' o x y]
 validExprs' = filter (not . null) (map eval' allExprs)
 -- There are 10839369 valid expressions
 
--- Problem 6
+-- Exercise 6
 
 -- b. Produce nearest solution
 nearestSolution :: Int -> [Expr] -> [Expr]

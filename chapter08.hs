@@ -22,7 +22,7 @@ add :: Nat -> Nat -> Nat
 add Zero n = n
 add (Succ m) n = Succ (add m n)
 
--- Problem 1
+-- Exercise 1
 mult :: Nat -> Nat -> Nat
 mult _ Zero = Zero
 mult n (Succ y) = add n (mult n y)   
@@ -41,7 +41,7 @@ occurs x (Node l y r) = x == y || occurs x l || occurs x r
 
 
 {-
-    Problem 2
+    Exercise 2
     This solution is more efficient than the previous occurs function
     because this one takes advantage of the search trees property where every
     number at the left subtree is smaller than or equal to the root, and  every
@@ -70,7 +70,7 @@ t3 = Node'
                     (Leaf' 7) (Leaf' 8))) 
             (Leaf' 9))
 
--- Problem 3
+-- Exercise 3
 balanced :: Tree' a -> Bool
 balanced (Leaf' _) = True
 balanced (Node' l r) = abs (leavesInTree l - leavesInTree r) <= 1 && 
@@ -80,7 +80,7 @@ leavesInTree :: Tree' a -> Int
 leavesInTree (Leaf' _) = 1
 leavesInTree (Node' l r) = leavesInTree l + leavesInTree r
 
--- Problem 4
+-- Exercise 4
 balance :: [a] -> Tree' a
 balance [] = error "Empty list"
 balance [x] = Leaf' x
@@ -95,13 +95,13 @@ split xs = (l, r)
                 l = take (size `div` 2) xs
                 r = drop (size `div` 2) xs
 
--- Problem 5
+-- Exercise 5
 folde :: (Int -> a) -> (a -> a -> a) -> Expr -> a
 folde f _ (Val x) =  f x
 folde f g (Add x y) = g (folde f g x) (folde f g y)
 folde f g (Mult x y) = g (folde f g x) (folde f g y)
 
--- Problem 6
+-- Exercise 6
 eval'' :: Expr -> Int
 eval'' (Add x y) = folde id (+) (Add x y)
 eval'' (Mult x y) = folde id (*) (Mult x y)
@@ -111,14 +111,14 @@ size' (Val _) = 1
 size' (Add l r) = size' l + size' r
 size' (Mult l r) = size' l + size' r
 
--- Problem 7
+-- Exercise 7
 data Maybe' a = Nothing' | Just' a 
 
 instance Eq a => Eq (Maybe' a) where
     (Just' x) == (Just' y) = x == y
     Nothing' == Nothing' = True
 
--- Problem 8
+-- Exercise 8
 data Prop = Const Bool 
     | Var Char
     | Not Prop
