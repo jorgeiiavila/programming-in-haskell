@@ -34,7 +34,7 @@ perfects :: Int -> [Int]
 perfects n = [x | x <- [2..n], sum (factors x) - x == x]
 
 -- Exercise 7
-ExerciseSeven = concat [[(x,y) | y <- [3,4]] | x <- [1,2]]
+exerciseSeven = concat [[(x,y) | y <- [3,4]] | x <- [1,2]]
 
 -- Exercise 8
 positions' :: Eq a => a -> [a] -> [Int]
