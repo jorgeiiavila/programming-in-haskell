@@ -153,6 +153,7 @@ valid'' Add _ _ = True
 valid'' Sub x y = True
 valid'' Mul _ _ = True
 valid'' Div x y = y /= 0 && x `mod` y == 0
+valid'' Exp _ _ = True
 
 eval' :: Expr -> [Int]
 eval' (Val n) = [n | n > 0]
