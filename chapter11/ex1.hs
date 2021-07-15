@@ -43,7 +43,7 @@ won g = wins O g || wins X g
 
 putGrid :: Grid -> IO ()
 putGrid = putStrLn . unlines . concat . interleave bar . map showRow
-            where bar = [replicate ((size * 4) - 1) '-']
+            where bar = [replicate (size * 4 - 1) '-']
 
 showRow :: [Player] -> [String]
 showRow = beside . interleave bar . map showPlayer
@@ -127,7 +127,7 @@ gametree g p = Node g [gametree g' (next p) | g' <- moves g p]
 moves :: Grid -> Player -> [Grid]
 moves g p | won g = []
           | full g = []
-          | otherwise = concat [move g i p | i <- [0..((size ^ 2) - 1)]]
+          | otherwise = concat [move g i p | i <- [0..(size ^ 2 - 1)]]
 
 prune :: Int -> Tree a -> Tree a
 prune 0 (Node x _) = Node x []
@@ -180,8 +180,6 @@ play' g p | wins O g = putStrLn "Player 0 wins!\n"
                         (play $! bestmove g p) (next p)
 
 
--- Exercises
-
 -- Exercise 1
 nodes :: Tree Grid -> Int
 nodes t = nodes' t + 1
@@ -189,18 +187,3 @@ nodes t = nodes' t + 1
 nodes' :: Tree Grid -> Int
 nodes' (Node _ []) = 0
 nodes' (Node _ gs) = length gs + sum [nodes' x | x <- gs]
-
--- Exercise 2
--- bestmove' :: Grid -> Player -> IO Grid
--- bestmove' g p = do
---                     index <- randomRIO (0, length grids)
---                     return (grids !! index)
---                     where
---                         tree = prune depth (gametree g p)
---                         Node (_, best) ts = minimax tree
---                         grids = [g' | Node (g', p') _ <- ts, p' == best]
-
--- Exercise 3
-
-
-
