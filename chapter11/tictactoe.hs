@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 import Data.Char ( isDigit )
 import Data.List ( transpose )
 import System.IO ( hSetBuffering, stdout, BufferMode(NoBuffering) ) 
