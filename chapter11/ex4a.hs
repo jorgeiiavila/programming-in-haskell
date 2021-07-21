@@ -152,11 +152,6 @@ bestmove g p = head [g' | Node (g', p') _ <- ts, p' == best]
                     tree = prune depth (gametree g p)
                     Node (_, best) ts = minimax tree
 
-main :: IO ()
-main = do
-        hSetBuffering stdout NoBuffering
-        play empty O
-
 play :: Grid -> Player -> IO ()
 play g p = do
             cls
@@ -178,3 +173,23 @@ play' g p | wins O g = putStrLn "Player 0 wins!\n"
           | p == X = do
                         putStr "Player X is thinking... "
                         (play $! bestmove g p) (next p)  
+
+-- Exercise 4a
+chooseOrder :: IO String
+chooseOrder = do
+                print "First or Second? (f | s)"
+                p <- getLine
+                if p `notElem` ["f", "s"] then do
+                    print "Please insert a valid character (f | s)"
+                    chooseOrder
+                else 
+                    return p
+
+main :: IO ()
+main = do
+        hSetBuffering stdout NoBuffering
+        p <- chooseOrder
+        if p == "f" then
+            play empty O
+        else
+            play empty X
