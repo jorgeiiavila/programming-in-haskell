@@ -1,0 +1,42 @@
+Two possible parse trees for:
+2 + 3 + 4
+
+Grammar:
+expr ::= expr + expr | term
+term ::= term * term | factor
+factor ::= (expr) | nat
+nat ::= 0 | 1 | 2 ...
+
+Tree 1
+(2 + 3) + 4
+
+                expr
+        /        |        \
+      expr       +        expr
+   /   |   \               | 
+ expr  +   expr           term
+  |         |              |                
+ term      term          factor
+  |         |              |
+factor    factor          nat
+  |         |              |
+ nat       nat             4
+  |         |
+  2         3
+
+Tree 2
+2 + (3 + 4)
+
+                expr
+        /        |        \
+      expr       +        expr       
+       |               /   |   \
+      term           expr  +   expr
+       |              |         |
+     factor          term      term
+       |              |         |
+      nat           factor    factor
+       |              |         |
+       2             nat       nat
+                      |         |
+                      3         4
