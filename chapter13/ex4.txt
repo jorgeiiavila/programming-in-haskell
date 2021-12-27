@@ -1,0 +1,30 @@
+4. Explain why the final simplification of the grammar 
+for arithmetic expressions has a dramatic effect on the 
+efficiency of the resulting parser. 
+
+Hint: begin by considering how an expression comprising a 
+single number would be parsed if this simplification step had
+ not been made.
+
+Grammar 3
+
+expr ::= term + expr | term
+term ::= factor * term | factor
+factor ::= (expr) | nat
+nat ::= 0 | 1 | 2 ...
+
+Final Grammar
+
+expr ::= term (+ expr | €)
+term ::= factor (* term | €)
+factor ::= (expr) | nat
+nat ::= 0 | 1 | 2 ...
+
+Answer:
+
+Without left factoring the parser would take exponential time
+to the size of the expression, since it would backtrack excessively.
+In parsing a single number, for example, the parser would not be able
+to decide whether the + sign is present or not without first parsing
+term.
+
