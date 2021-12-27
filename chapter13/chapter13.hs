@@ -174,7 +174,7 @@ term =
       symbol "*"
       t <- term
       return (f * t)
-    <|> natural
+      <|> return f
 
 factor :: Parser Int
 factor =
