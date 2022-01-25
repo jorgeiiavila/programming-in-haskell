@@ -1,0 +1,20 @@
+Redexes in the following expressions
+
+1. 1 + (2 + 3)
+
+- innermost -> 2 + 3 
+
+2. (1 + 2) * (2 + 3)
+
+- 1 + 2 -> innermost
+- 2 + 3 -> neither
+
+3. fst (1 + 2, 2 + 3)
+
+- 1 + 2 -> innermost
+- 2 + 3 -> neither
+- fst (1 + 2, 2 + 3) -> outermost
+
+4. (\x -> 1 + x) (2 * 3)
+- 2 * 3 -> innermost
+- (\x -> 1 + x) (2 * 3) -> outermost
