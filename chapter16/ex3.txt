@@ -1,0 +1,30 @@
+all p [] = True
+all p (x:xs) = p x && all p xs
+
+replicate :: Int -> a -> [a]
+replicate 0 _ = []
+replicate n x = x : replicate (n - 1) x
+
+all (== x) (replicate n x) = True => all (== x) (replicate (n + 1) x) = True
+
+Base Case
+
+all (== x) (replicate 0 x)
+= { applying replicate }
+all (== x) []
+= { applying all }
+True
+
+Inductive Case
+
+all (== x) (replicate (n + 1) x)
+= { applying replicate }
+all (== x) (x : replicate n x)
+= { applying all }
+(== x) x && all (== x) (replicate n x)
+= { applying (== x) }
+True && all (== x) (replicate n x)
+= { induction hypothesis }
+True && True
+= { applying && }
+True
