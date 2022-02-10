@@ -1,0 +1,48 @@
+[] ++ ys = ys => property 1
+(x:xs) ++ ys = x : (xs ++ ys) => property 2
+
+xs ++ [] = xs
+
+xs ++ [] = xs => (x:xs) ++ [] = x:xs
+
+Base case
+
+[] ++ []
+= { applying ++ }
+[]
+
+Inductive case
+
+(x:xs) ++ []
+= { applying property 2 }
+x : (xs ++ [])
+= { induction hypothesis }
+x:xs
+
+xs ++ (ys ++ zs) = (xs ++ ys) ++ zs
+
+xs ++ (ys ++ zs) = (xs ++ ys) ++ zs => (x:xs) ++ (ys ++ zs) = ((x:xs) ++ ys) ++ zs
+
+Base case
+
+[] ++ (ys ++ zs)
+= { applying property 1 }
+ys ++ zs
+= { unapplying ++ }
+([] ++ ys) ++ zs
+
+Inductive case
+
+(x:xs) ++ (ys ++ zs)
+
+= { applying property 2 }
+x : (xs ++ (ys ++ zs))
+= { induction hypothesis }
+x : ((xs ++ ys) ++ zs)
+= { unapplying ++ }
+(x : (xs ++ ys)) ++ zs
+= { unapplying ++ }
+((x:xs) ++ ys) ++ zs
+
+
+
