@@ -1,0 +1,33 @@
+comp' e c = comp e ++ c
+
+comp (Val n) = [PUSH n]
+comp (Add x y) = comp x ++ comp y ++ [ADD]
+
+Base Case:
+
+comp' (Val n) c
+= { specification of comp' }
+comp (Val n) ++ c
+= { applying comp }
+[PUSH n] ++ c
+= { applying ++ }
+PUSH n : c
+
+Inductive Case:
+
+comp' (Add x y) c
+= { specification of comp' }
+comp (Add x y) ++ c
+= { applying comp }
+(comp x ++ comp y ++ [ADD]) ++ c
+= { associativity of ++ }
+comp x ++ (comp y ++ ([ADD] ++ c))
+= { applying ++ }
+comp x ++ (comp y ++ (ADD : c))
+= { induction hypothesis for inner parentheses }
+comp x ++ (comp' y (ADD : c))
+= { induction hypotesis }
+comp' x (comp' y (ADD : c))
+
+
+
